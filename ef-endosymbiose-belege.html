@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Endosymbiontentheorie: Belege prüfen</title>
+</head>
+<body>
+<script>
+/* ===== INHALT: nur diesen Block anpassen ===== */
+window.SICHERUNG = {
+ "titel": "Endosymbiontentheorie: Belege prüfen",
+ "intro": "Warum ähneln Chloroplasten Prokaryoten?",
+ "aufgaben": [
+  {
+   "typ": "zuordnen",
+   "titel": "Beleg oder nicht?",
+   "auftrag": "Prüfe jede Aussage: Ist sie ein Beleg dafür, dass Chloroplasten und Mitochondrien von Bakterien abstammen? Sortiere.",
+   "kategorien": [
+    {
+     "name": "Beleg für die Endosymbiontentheorie",
+     "begriffe": [
+      "Chloroplasten haben eine ringförmige DNA, die frei im Organell liegt.",
+      "Mitochondrien haben kleine Ribosomen (70S) wie Bakterien.",
+      "Mitochondrien sind etwa so groß wie Bakterien.",
+      "Chloroplasten sind von zwei Membranen umgeben."
+     ]
+    },
+    {
+     "name": "Kein Beleg",
+     "begriffe": [
+      "Chloroplasten liegen im Cytoplasma der Pflanzenzelle.",
+      "Mitochondrien kommen in Tier- und Pflanzenzellen vor."
+     ]
+    }
+   ],
+   "ablenker": []
+  },
+  {
+   "typ": "quiz",
+   "titel": "Fehlerdetektiv",
+   "fragen": [
+    {
+     "frage": "Welche Aussage ist fachlich falsch?",
+     "optionen": [
+      "Der Chloroplast war früher ein Bakterium, das sich in ein Organell verwandelt hat.",
+      "Chloroplasten stammen von Cyanobakterien ab.",
+      "Das Cyanobakterium wurde aufgenommen, aber nicht verdaut."
+     ],
+     "richtig": 0,
+     "erklaerung": "Kein einzelnes Bakterium hat sich verwandelt. Chloroplasten sind Nachkommen des aufgenommenen Cyanobakteriums, die über sehr viele Generationen fest zur Zelle gehören."
+    },
+    {
+     "frage": "Warum passt die Textkarte mit dem Lysosom nicht zur Endosymbiose?",
+     "optionen": [
+      "Ein verdautes Cyanobakterium kann keine Nachkommen in der Zelle haben.",
+      "Lysosomen können keine Bakterien verdauen.",
+      "Das Lysosom hätte dann selbst zum Chloroplasten werden müssen."
+     ],
+     "richtig": 0,
+     "erklaerung": "Wird das Cyanobakterium verdaut, bleibt nichts übrig, aus dem Chloroplasten hervorgehen können. Endosymbiose heißt: aufgenommen, aber nicht verdaut."
+    }
+   ]
+  }
+ ],
+ "heft": {
+  "titel": "Ins Heft",
+  "auftrag": "Übertrage die Belege unter den Tafelsatz zur Leitfrage.",
+  "inhalt": "<p><b>Belege für die Endosymbiontentheorie</b></p><p>Chloroplasten und Mitochondrien stimmen in mehreren Merkmalen mit Bakterien überein:</p><ul><li>ringförmige DNA, frei im Organell (keine Kernhülle)</li><li>kleine Ribosomen (70S)</li><li>Größe etwa wie Bakterien</li><li>zwei Membranen (Aufnahme durch Endocytose)</li></ul><p>Weil es viele Belege gibt, spricht man von einer Theorie und nicht nur von einer Vermutung.</p>"
+ },
+ "quelle": "Eigene Darstellung nach Vergleichstabelle und Textkarten der Stunde vom 13.10.2026."
+};
+/* ===== Ende Inhalt ===== */
+</script>
+<style>
+:root{--ink:#1a1a1a;--muted:#555;--line:#cfcfcf;--bg:#fff;--soft:#f5f5f5;--accent:#1f4e8c;--ok:#1e7a3c;--okbg:#e6f4ea;--bad:#b3261e;--badbg:#fbe9e7;--sel:#fff1b8;--selline:#b58900}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:680px;margin:0 auto;padding:16px 16px 56px}
+h1{font-size:1.45rem;line-height:1.25;margin:.3em 0 .2em}
+.intro{color:var(--muted);margin:0 0 8px}
+h2{font-size:1.08rem;margin:0 0 6px}
+.task{border:1px solid var(--line);border-radius:8px;padding:14px 14px 16px;margin:18px 0}
+.auftrag{margin:0 0 12px}
+button{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.pool{display:flex;flex-wrap:wrap;gap:8px;padding:10px;background:var(--soft);border-radius:6px;min-height:64px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:6px;padding:8px 12px;min-height:44px;text-align:left;cursor:pointer}
+.chip.sel{background:var(--sel);border-color:var(--selline);box-shadow:0 0 0 2px var(--selline) inset}
+.hint{font-size:.9rem;color:var(--muted);margin:6px 0 0}
+.text{margin:0 0 12px;line-height:2.1}
+.gap{display:inline-block;min-width:6em;min-height:1.9em;line-height:1.5;border:0;border-bottom:2px solid var(--accent);background:#eef2f8;padding:0 .45em;border-radius:4px 4px 0 0;cursor:pointer;vertical-align:baseline}
+.gap:empty::before{content:"\00a0"}
+.slots{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.slots li{display:flex;align-items:stretch;gap:8px}
+.slots .nr{flex:0 0 2em;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--muted)}
+.slot{flex:1;min-height:52px;border:1px dashed var(--line);border-radius:6px;background:#fff;text-align:left;padding:8px 12px;cursor:pointer}
+.slot.filled{border-style:solid}
+.cats{display:grid;gap:10px;margin:0 0 12px}
+@media(min-width:560px){.cats.two{grid-template-columns:1fr 1fr}.cats.three{grid-template-columns:1fr 1fr 1fr}}
+.cat{border:1px solid var(--line);border-radius:6px;padding:8px;min-height:90px;background:#fff;cursor:pointer;text-align:left;display:block;width:100%}
+.cat .cname{font-weight:600;display:block;margin-bottom:6px}
+.cat .inner{display:flex;flex-wrap:wrap;gap:6px}
+.figure{position:relative;margin:22px 0 26px;border:1px solid var(--line);border-radius:6px;background:#fff}
+.figure img,.figure svg{display:block;width:100%;height:auto}
+.zone{position:absolute;transform:translate(-50%,-50%);min-width:44px;min-height:32px;max-width:46%;border:2px solid var(--accent);background:rgba(255,255,255,.92);border-radius:5px;padding:2px 6px;font-size:.85rem;line-height:1.25;cursor:pointer}
+.zone:empty::before{content:attr(data-nr);color:var(--accent);font-weight:700}
+.q{margin:0 0 14px}
+.q p{margin:0 0 6px;font-weight:600}
+.opts{display:grid;gap:6px}
+.opt{border:1px solid var(--line);background:#fff;border-radius:6px;padding:9px 12px;min-height:44px;text-align:left;cursor:pointer}
+.q p.expl{margin:6px 0 0;font-size:.95rem;font-weight:400}
+.ok{background:var(--okbg)!important;border-color:var(--ok)!important}
+.bad{background:var(--badbg)!important;border-color:var(--bad)!important}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:6px;padding:10px 16px;min-height:44px;cursor:pointer}
+.btn.sec{background:#fff;color:var(--accent)}
+.btn[hidden]{display:none}
+.fb{margin:10px 0 0;font-weight:600;min-height:1.2em}
+.fb.good{color:var(--ok)}.fb.warn{color:var(--bad)}
+.done{border-color:var(--ok)}
+#heft{border:2px solid var(--ink);border-radius:8px;padding:14px 16px;margin:24px 0}
+#heft[hidden]{display:none}
+#heft h2{margin-bottom:8px}
+.heftinhalt{background:var(--soft);border-radius:6px;padding:12px 14px;margin:8px 0 0}
+.heftinhalt p:first-child{margin-top:0}.heftinhalt p:last-child{margin-bottom:0}
+.locked{color:var(--muted);font-size:.95rem;margin:24px 0 0}
+.quelle{color:var(--muted);font-size:.8rem;margin-top:28px}
+</style>
+<main id="app"></main>
+<script>
+(function(){
+"use strict";
+var D = window.SICHERUNG;
+var app = document.getElementById("app");
+var solved = [];
+function el(tag, cls, txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function shuffleNotSorted(a){if(a.length<2)return a.slice();var s;do{s=shuffle(a);}while(s.every(function(x,i){return x===a[i];}));return s;}
+
+var h1=el("h1",null,D.titel);app.appendChild(h1);
+if(D.intro){app.appendChild(el("p","intro",D.intro));}
+
+function makeTask(a, idx){
+  var box=el("section","task");
+  box.appendChild(el("h2",null,(D.aufgaben.length>1?("Aufgabe "+(idx+1)+": "):"")+(a.titel||"")));
+  if(a.auftrag)box.appendChild(el("p","auftrag",a.auftrag));
+  var fb=el("p","fb");var row=el("div","row");
+  var check=el("button","btn","Prüfen");var reset=el("button","btn sec","Neu starten");var show=el("button","btn sec","Lösung zeigen");show.hidden=true;
+  row.appendChild(check);row.appendChild(reset);row.appendChild(show);
+  var tries=0;
+  var api={box:box,fb:fb,row:row,check:check,reset:reset,show:show,
+    result:function(nOk,nAll){
+      tries++;
+      if(nOk===nAll){fb.className="fb good";fb.textContent="Alles richtig.";box.classList.add("done");markSolved(idx);check.disabled=true;}
+      else{fb.className="fb warn";fb.textContent=nOk+" von "+nAll+" richtig. Rot markierte Stellen noch einmal prüfen.";if(tries>=2)show.hidden=false;}
+    },
+    clearFb:function(){fb.textContent="";fb.className="fb";}
+  };
+  return api;
+}
+function markSolved(i){solved[i]=true;updateHeft();}
+
+/* gemeinsame Auswahl: erst Baustein antippen, dann Ziel antippen */
+var selected=null;
+function select(chip){
+  if(selected===chip){chip.classList.remove("sel");selected=null;return;}
+  if(selected)selected.classList.remove("sel");
+  selected=chip;chip.classList.add("sel");
+}
+function clearSel(){if(selected)selected.classList.remove("sel");selected=null;}
+function clearMarks(root){root.querySelectorAll(".ok,.bad").forEach(function(n){n.classList.remove("ok","bad");});}
+
+/* Typ: reihenfolge */
+function reihenfolge(a,t){
+  var pool=el("div","pool");var ol=el("ol","slots");
+  var slots=a.schritte.map(function(_,i){var li=el("li");li.appendChild(el("span","nr",String(i+1)));var s=el("button","slot");s.type="button";s.dataset.nr=i;li.appendChild(s);ol.appendChild(li);return s;});
+  function build(){
+    pool.innerHTML="";slots.forEach(function(s){s.textContent="";s.classList.remove("filled","ok","bad");delete s.dataset.val;});
+    shuffleNotSorted(a.schritte.map(function(_,i){return i;})).forEach(function(i){var c=el("button","chip",a.schritte[i]);c.type="button";c.dataset.val=i;pool.appendChild(c);});
+  }
+  pool.addEventListener("click",function(e){var c=e.target.closest(".chip");if(!c)return;t.clearFb();
+    var free=slots.filter(function(s){return !s.dataset.val;})[0];if(!free)return;
+    free.textContent=c.textContent;free.dataset.val=c.dataset.val;free.classList.add("filled");c.remove();clearMarks(ol);});
+  ol.addEventListener("click",function(e){var s=e.target.closest(".slot");if(!s||!s.dataset.val||t.box.classList.contains("done"))return;t.clearFb();
+    var c=el("button","chip",s.textContent);c.type="button";c.dataset.val=s.dataset.val;pool.appendChild(c);
+    s.textContent="";delete s.dataset.val;s.classList.remove("filled","ok","bad");});
+  t.box.appendChild(ol);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Tippe die Schritte in der richtigen Reihenfolge an. Antippen eines Feldes oben legt den Schritt zurück."));
+  t.check.onclick=function(){var ok=0;slots.forEach(function(s,i){s.classList.remove("ok","bad");if(!s.dataset.val)return;var r=Number(s.dataset.val)===i;s.classList.add(r?"ok":"bad");if(r)ok++;});t.result(ok,slots.length);};
+  t.show.onclick=function(){pool.innerHTML="";slots.forEach(function(s,i){s.textContent=a.schritte[i];s.dataset.val=i;s.classList.add("filled");});t.check.onclick();};
+  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  build();
+}
+
+/* Typ: lueckentext  (Lücken im Text als [[Wort]]) */
+function lueckentext(a,t){
+  var p=el("p","text");var pool=el("div","pool");var gaps=[];var words=[];
+  a.text.split(/(\[\[[^\]]+\]\])/).forEach(function(part){
+    var m=part.match(/^\[\[([^\]]+)\]\]$/);
+    if(m){var g=el("button","gap");g.type="button";g.dataset.sol=m[1];g.setAttribute("aria-label","Lücke");gaps.push(g);words.push(m[1]);p.appendChild(g);}
+    else p.appendChild(document.createTextNode(part));
+  });
+  function build(){pool.innerHTML="";clearSel();gaps.forEach(function(g){g.textContent="";g.classList.remove("ok","bad");});
+    shuffle(words.concat(a.ablenker||[])).forEach(function(w){var c=el("button","chip",w);c.type="button";pool.appendChild(c);});}
+  pool.addEventListener("click",function(e){var c=e.target.closest(".chip");if(c)select(c);});
+  p.addEventListener("click",function(e){var g=e.target.closest(".gap");if(!g||t.box.classList.contains("done"))return;t.clearFb();g.classList.remove("ok","bad");
+    if(selected&&pool.contains(selected)){
+      if(g.textContent){var back=el("button","chip",g.textContent);back.type="button";pool.appendChild(back);}
+      g.textContent=selected.textContent;selected.remove();selected=null;
+    }else if(g.textContent){var back2=el("button","chip",g.textContent);back2.type="button";pool.appendChild(back2);g.textContent="";}
+  });
+  t.box.appendChild(p);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Erst ein Wort antippen, dann die Lücke. Antippen einer gefüllten Lücke legt das Wort zurück."));
+  t.check.onclick=function(){var ok=0;gaps.forEach(function(g){g.classList.remove("ok","bad");if(!g.textContent){g.classList.add("bad");return;}var r=g.textContent===g.dataset.sol;g.classList.add(r?"ok":"bad");if(r)ok++;});t.result(ok,gaps.length);};
+  t.show.onclick=function(){gaps.forEach(function(g){g.textContent=g.dataset.sol;});pool.innerHTML="";t.check.onclick();};
+  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  build();
+}
+
+/* Typ: zuordnen  (Begriffe in Kategorien sortieren) */
+function zuordnen(a,t){
+  var n=a.kategorien.length;var cats=el("div","cats"+(n===2?" two":n===3?" three":""));var pool=el("div","pool");var items=[];
+  var boxes=a.kategorien.map(function(k,i){var b=el("div","cat");b.setAttribute("role","button");b.tabIndex=0;b.dataset.k=i;b.appendChild(el("span","cname",k.name));var inner=el("div","inner");b.appendChild(inner);cats.appendChild(b);
+    k.begriffe.forEach(function(w){items.push({w:w,k:i});});return b;});
+  (a.ablenker||[]).forEach(function(w){items.push({w:w,k:-1});});
+  function chip(it){var c=el("button","chip",it.w);c.type="button";c.dataset.k=it.k;return c;}
+  function build(){pool.innerHTML="";clearSel();boxes.forEach(function(b){b.querySelector(".inner").innerHTML="";});shuffle(items).forEach(function(it){pool.appendChild(chip(it));});}
+  pool.addEventListener("click",function(e){var c=e.target.closest(".chip");if(c)select(c);});
+  cats.addEventListener("click",function(e){if(t.box.classList.contains("done"))return;t.clearFb();
+    var c=e.target.closest(".chip");var b=e.target.closest(".cat");
+    if(c&&b&&!selected){c.classList.remove("ok","bad");pool.appendChild(c);return;}
+    if(selected&&b){selected.classList.remove("sel","ok","bad");b.querySelector(".inner").appendChild(selected);selected=null;}
+  });
+  t.box.appendChild(cats);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Erst eine Karte antippen, dann das passende Feld. Antippen einer einsortierten Karte legt sie zurück."+((a.ablenker&&a.ablenker.length)?" Nicht jede Karte gehört in ein Feld.":"")));
+  t.check.onclick=function(){var ok=0,all=items.filter(function(i){return i.k>=0;}).length,wrong=0;
+    boxes.forEach(function(b,i){b.querySelectorAll(".chip").forEach(function(c){c.classList.remove("ok","bad");var r=Number(c.dataset.k)===i;c.classList.add(r?"ok":"bad");if(r)ok++;else wrong++;});});
+    t.result(wrong?Math.min(ok,all-1):ok,all);};
+  t.show.onclick=function(){pool.innerHTML="";boxes.forEach(function(b){b.querySelector(".inner").innerHTML="";});items.forEach(function(it){var c=chip(it);if(it.k>=0)boxes[it.k].querySelector(".inner").appendChild(c);else pool.appendChild(c);});t.check.onclick();};
+  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  build();
+}
+
+/* Typ: schaubild  (Begriffe an nummerierte Stellen einer Abbildung) */
+function schaubild(a,t){
+  var fig=el("div","figure");
+  if(/^\s*<svg/i.test(a.bild)){fig.innerHTML=a.bild;}else{var img=el("img");img.src=a.bild;img.alt=a.bildAlt||"";fig.appendChild(img);}
+  var pool=el("div","pool");
+  var zones=a.ziele.map(function(z,i){var b=el("button","zone");b.type="button";b.dataset.nr=String(i+1);b.dataset.sol=z.begriff;b.style.left=z.x+"%";b.style.top=z.y+"%";fig.appendChild(b);return b;});
+  function build(){pool.innerHTML="";clearSel();zones.forEach(function(z){z.textContent="";z.classList.remove("ok","bad");});
+    shuffle(a.ziele.map(function(z){return z.begriff;}).concat(a.ablenker||[])).forEach(function(w){var c=el("button","chip",w);c.type="button";pool.appendChild(c);});}
+  pool.addEventListener("click",function(e){var c=e.target.closest(".chip");if(c)select(c);});
+  fig.addEventListener("click",function(e){var z=e.target.closest(".zone");if(!z||t.box.classList.contains("done"))return;t.clearFb();z.classList.remove("ok","bad");
+    if(selected&&pool.contains(selected)){if(z.textContent){var b=el("button","chip",z.textContent);b.type="button";pool.appendChild(b);}z.textContent=selected.textContent;selected.remove();selected=null;}
+    else if(z.textContent){var b2=el("button","chip",z.textContent);b2.type="button";pool.appendChild(b2);z.textContent="";}
+  });
+  t.box.appendChild(fig);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Erst einen Begriff antippen, dann die passende Nummer im Bild."));
+  t.check.onclick=function(){var ok=0;zones.forEach(function(z){z.classList.remove("ok","bad");var r=z.textContent===z.dataset.sol;z.classList.add(r?"ok":"bad");if(r)ok++;});t.result(ok,zones.length);};
+  t.show.onclick=function(){zones.forEach(function(z){z.textContent=z.dataset.sol;});pool.innerHTML="";t.check.onclick();};
+  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  build();
+}
+
+/* Typ: quiz  (Auswahlfragen mit Erklärung; auch Fehlerdetektiv) */
+function quiz(a,t){
+  var wrap=el("div");var answered=0,correct=0;var qs=[];
+  function build(){wrap.innerHTML="";answered=0;correct=0;qs=[];
+    a.fragen.forEach(function(f){var q=el("div","q");q.appendChild(el("p",null,f.frage));var opts=el("div","opts");var ex=el("p","expl");var done=false;
+      shuffle(f.optionen.map(function(o,i){return i;})).forEach(function(i){var b=el("button","opt",f.optionen[i]);b.type="button";
+        b.onclick=function(){if(done)return;done=true;answered++;var r=i===f.richtig;if(r)correct++;b.classList.add(r?"ok":"bad");
+          if(!r)opts.querySelectorAll(".opt").forEach(function(o){if(o.textContent===f.optionen[f.richtig])o.classList.add("ok");});
+          ex.textContent=(r?"Richtig. ":"Nicht ganz. ")+(f.erklaerung||"");
+          if(answered===a.fragen.length)t.result(correct,a.fragen.length);};
+        opts.appendChild(b);});
+      q.appendChild(opts);q.appendChild(ex);wrap.appendChild(q);qs.push(q);});
+  }
+  t.box.appendChild(wrap);
+  t.check.hidden=true;t.show.hidden=true;t.show.remove();
+  t.reset.onclick=function(){t.box.classList.remove("done");t.clearFb();build();};
+  var origResult=t.result;
+  t.result=function(ok,all){ if(ok===all){origResult(ok,all);} else {t.fb.className="fb warn";t.fb.textContent=ok+" von "+all+" richtig. Lies die Erklärungen und starte neu.";} };
+  build();
+}
+
+var TYPES={reihenfolge:reihenfolge,lueckentext:lueckentext,zuordnen:zuordnen,schaubild:schaubild,quiz:quiz};
+D.aufgaben.forEach(function(a,i){solved[i]=false;var t=makeTask(a,i);TYPES[a.typ](a,t);t.box.appendChild(t.row);t.box.appendChild(t.fb);app.appendChild(t.box);});
+
+var lock=el("p","locked","Wenn alle Aufgaben gelöst sind, erscheint hier dein Heft-Eintrag.");
+var heft=el("section");heft.id="heft";heft.hidden=true;
+heft.appendChild(el("h2",null,D.heft.titel||"Ins Heft"));
+if(D.heft.auftrag)heft.appendChild(el("p",null,D.heft.auftrag));
+var hi=el("div","heftinhalt");hi.innerHTML=D.heft.inhalt;heft.appendChild(hi);
+app.appendChild(lock);app.appendChild(heft);
+function updateHeft(){var all=solved.every(Boolean);heft.hidden=!all;lock.hidden=all;if(all&&!updateHeft.scrolled){updateHeft.scrolled=true;setTimeout(function(){heft.scrollIntoView({behavior:"smooth",block:"start"});},250);}}
+if(D.quelle){app.appendChild(el("p","quelle",D.quelle));}
+document.addEventListener("click",function(e){if(!e.target.closest(".chip,.gap,.zone,.cat,.slot"))clearSel();});
+})();
+</script>
+
+</body>
+</html>
