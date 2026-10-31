@@ -7,7 +7,7 @@
 <title>Nährstoffe: Was macht der Körper damit?</title>
 </head>
 <body>
-<!-- Vorlage HTML-Sicherung. Versuchsregel (seit 31.10.2026): Prüfen erst, wenn alles belegt ist; nach Versuch 1 nur Anzahl richtig, keine Markierung; nach Versuch 2 Fehler rot und Lösung zeigen; am Ende Ergebnis je Aufgabe (1. Versuch, 2. Versuch, Lösung angesehen). Aufgabentypen: reihenfolge, lueckentext ([[Wort]] = Lücke), zuordnen, schaubild (bild = <svg> oder data:-Bild; x/y in Prozent), quiz. Heft-Eintrag erscheint erst, wenn alle Aufgaben gelöst sind. Keine externen Dateien, keine Datenspeicherung. -->
+<!-- Vorlage HTML-Sicherung. Versuchsregel (seit 31.10.2026): Prüfen erst, wenn alles belegt ist; nach Versuch 1 nur Anzahl richtig, keine Markierung; nach Versuch 2 Fehler rot und Lösung zeigen; am Ende Ergebnis je Aufgabe (1. Versuch, 2. Versuch, Lösung angesehen). Aufgabentypen: reihenfolge, lueckentext ([[Wort]] = Lücke), zuordnen, schaubild (bild = <svg> oder data:-Bild; x/y in Prozent), quiz. Mappen-Eintrag erscheint erst, wenn alle Aufgaben gelöst sind. Keine externen Dateien, keine Datenspeicherung. -->
 <script>
 /* ===== INHALT: nur diesen Block anpassen ===== */
 window.SICHERUNG = {
@@ -116,8 +116,8 @@ window.SICHERUNG = {
   }
  ],
  "heft": {
-  "titel": "Ins Heft",
-  "auftrag": "Übertragt die Tabelle ins Heft. Ergänzt bei „Beispiele“ zu jedem Nährstoff ein eigenes Lebensmittel.",
+  "titel": "In die Mappe",
+  "auftrag": "Übertragt die Tabelle in eure Mappe. Ergänzt bei „Beispiele“ zu jedem Nährstoff ein eigenes Lebensmittel.",
   "inhalt": "<p><b>Nährstoffe: Was macht der Körper damit?</b></p><table style=\"border-collapse:collapse;width:100%;font-size:.85rem;table-layout:fixed;hyphens:manual\"><colgroup><col style=\"width:32%\"><col style=\"width:43%\"><col style=\"width:25%\"></colgroup><tr><th style=\"border:1px solid #999;padding:4px 5px;text-align:left\">Nährstoff</th><th style=\"border:1px solid #999;padding:4px 5px;text-align:left\">Aufgabe im Körper</th><th style=\"border:1px solid #999;padding:4px 5px;text-align:left\">Bei­spiele</th></tr><tr><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Kohlen­hydrate</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">liefern den größten Teil der Energie</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Nudeln, …</td></tr><tr><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Proteine (Eiweiß)</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Baustoffe für Muskeln, Haut und Haare</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Ei, …</td></tr><tr><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Fette</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">viel Energie in kleiner Menge, Vorrat</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Butter, …</td></tr><tr><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Vitamine und Mineral­stoffe</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Wirkstoffe, liefern keine Energie</td><td style=\"border:1px solid #999;padding:4px 5px;vertical-align:top\">Paprika, …</td></tr></table>"
  },
  "quelle": "Inhalte nach dem Arbeitsblatt „Das steckt in unserer Nahrung“ (Biologie 6a). Eigene Darstellung."
@@ -354,9 +354,9 @@ function quiz(a,t){
 var TYPES={reihenfolge:reihenfolge,lueckentext:lueckentext,zuordnen:zuordnen,schaubild:schaubild,quiz:quiz};
 D.aufgaben.forEach(function(a,i){solved[i]=false;var t=makeTask(a,i);TYPES[a.typ](a,t);t.box.appendChild(t.row);t.box.appendChild(t.fb);app.appendChild(t.box);});
 
-var lock=el("p","locked","Wenn alle Aufgaben gelöst sind, erscheint hier dein Heft-Eintrag.");
+var lock=el("p","locked","Wenn alle Aufgaben gelöst sind, erscheint hier dein Eintrag für die Mappe.");
 var heft=el("section");heft.id="heft";heft.hidden=true;
-heft.appendChild(el("h2",null,D.heft.titel||"Ins Heft"));
+heft.appendChild(el("h2",null,D.heft.titel||"In die Mappe"));
 if(D.heft.auftrag)heft.appendChild(el("p",null,D.heft.auftrag));
 var erg=el("div","ergebnis");heft.appendChild(erg);
 var hi=el("div","heftinhalt");hi.innerHTML=D.heft.inhalt;heft.appendChild(hi);
