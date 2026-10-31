@@ -7,7 +7,7 @@
 <title>Nährstoffe: Was macht der Körper damit?</title>
 </head>
 <body>
-<!-- Vorlage HTML-Sicherung. Aufgabentypen: reihenfolge, lueckentext ([[Wort]] = Lücke), zuordnen, schaubild (bild = <svg> oder data:-Bild; x/y in Prozent), quiz. Heft-Eintrag erscheint erst, wenn alle Aufgaben gelöst sind. Keine externen Dateien, keine Datenspeicherung. -->
+<!-- Vorlage HTML-Sicherung. Versuchsregel (seit 31.10.2026): Prüfen erst, wenn alles belegt ist; nach Versuch 1 nur Anzahl richtig, keine Markierung; nach Versuch 2 Fehler rot und Lösung zeigen; am Ende Ergebnis je Aufgabe (1. Versuch, 2. Versuch, Lösung angesehen). Aufgabentypen: reihenfolge, lueckentext ([[Wort]] = Lücke), zuordnen, schaubild (bild = <svg> oder data:-Bild; x/y in Prozent), quiz. Heft-Eintrag erscheint erst, wenn alle Aufgaben gelöst sind. Keine externen Dateien, keine Datenspeicherung. -->
 <script>
 /* ===== INHALT: nur diesen Block anpassen ===== */
 window.SICHERUNG = {
@@ -176,6 +176,7 @@ button{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;touch-
 #heft h2{margin-bottom:8px}
 .heftinhalt{background:var(--soft);border-radius:6px;padding:12px 14px;margin:8px 0 0}
 .heftinhalt p:first-child{margin-top:0}.heftinhalt p:last-child{margin-bottom:0}
+.ergebnis{border:1px solid var(--line);border-radius:6px;padding:8px 12px;margin:0 0 12px}.ergebnis ul{margin:4px 0 0;padding-left:1.2em}.ergtitel{margin:0;font-weight:600}.ergebnis li.nachher{color:var(--bad)}
 .locked{color:var(--muted);font-size:.95rem;margin:24px 0 0}
 .quelle{color:var(--muted);font-size:.8rem;margin-top:28px}
 </style>
@@ -186,6 +187,8 @@ button{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;touch-
 var D = window.SICHERUNG;
 var app = document.getElementById("app");
 var solved = [];
+var status = [];
+var MAXV = 2; /* Versuche pro Aufgabe */
 function el(tag, cls, txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function shuffleNotSorted(a){if(a.length<2)return a.slice();var s;do{s=shuffle(a);}while(s.every(function(x,i){return x===a[i];}));return s;}
@@ -201,12 +204,20 @@ function makeTask(a, idx){
   var check=el("button","btn","Prüfen");var reset=el("button","btn sec","Neu starten");var show=el("button","btn sec","Lösung zeigen");show.hidden=true;
   row.appendChild(check);row.appendChild(reset);row.appendChild(show);
   var tries=0;
+  function mark(list){list.forEach(function(x){x.el.classList.remove("ok","bad");x.el.classList.add(x.r?"ok":"bad");});}
   var api={box:box,fb:fb,row:row,check:check,reset:reset,show:show,
-    result:function(nOk,nAll){
-      tries++;
-      if(nOk===nAll){fb.className="fb good";fb.textContent="Alles richtig.";box.classList.add("done");markSolved(idx);check.disabled=true;}
-      else{fb.className="fb warn";fb.textContent=nOk+" von "+nAll+" richtig. Rot markierte Stellen noch einmal prüfen.";if(tries>=2)show.hidden=false;}
+    /* Regel 1: Prüfen zählt erst, wenn alles belegt ist */
+    incomplete:function(msg){fb.className="fb warn";fb.textContent=msg||"Erst alles einsortieren, dann prüfen.";},
+    /* Regel 2: nach Versuch 1 nur die Anzahl, keine Markierung; Regel 3: nach Versuch 2 Fehler zeigen und Lösung anbieten */
+    result:function(list,nAll){
+      tries++;var nOk=list.filter(function(x){return x.r;}).length;var all=nAll||list.length;var perfect=list.every(function(x){return x.r;});
+      if(perfect){mark(list);api.finish(tries===1?"im 1. Versuch richtig":"im 2. Versuch richtig");fb.className="fb good";fb.textContent="Alles richtig.";}
+      else if(tries<MAXV){fb.className="fb warn";fb.textContent=nOk+" von "+all+" richtig. Prüft noch einmal genau, ihr habt noch einen Versuch.";}
+      else{mark(list);check.disabled=true;reset.hidden=true;show.hidden=false;fb.className="fb warn";fb.textContent=nOk+" von "+all+" richtig. Rot markiert ist falsch. Seht euch jetzt die Lösung an und vergleicht.";}
     },
+    solution:function(list){mark(list);api.finish("Lösung angesehen");fb.className="fb";fb.textContent="Das ist die richtige Lösung. Schaut genau, was ihr falsch hattet.";},
+    finish:function(st){if(!status[idx])status[idx]=st;box.classList.add("done");check.disabled=true;reset.hidden=true;show.hidden=true;markSolved(idx);},
+    canReset:function(){return !box.classList.contains("done")&&tries<MAXV;},
     clearFb:function(){fb.textContent="";fb.className="fb";}
   };
   return api;
@@ -238,9 +249,10 @@ function reihenfolge(a,t){
     var c=el("button","chip",s.textContent);c.type="button";c.dataset.val=s.dataset.val;pool.appendChild(c);
     s.textContent="";delete s.dataset.val;s.classList.remove("filled","ok","bad");});
   t.box.appendChild(ol);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Tippe die Schritte in der richtigen Reihenfolge an. Antippen eines Feldes oben legt den Schritt zurück."));
-  t.check.onclick=function(){var ok=0;slots.forEach(function(s,i){s.classList.remove("ok","bad");if(!s.dataset.val)return;var r=Number(s.dataset.val)===i;s.classList.add(r?"ok":"bad");if(r)ok++;});t.result(ok,slots.length);};
-  t.show.onclick=function(){pool.innerHTML="";slots.forEach(function(s,i){s.textContent=a.schritte[i];s.dataset.val=i;s.classList.add("filled");});t.check.onclick();};
-  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  function liste(){return slots.map(function(s,i){return {el:s,r:Number(s.dataset.val)===i};});}
+  t.check.onclick=function(){if(slots.some(function(s){return !s.dataset.val;})){t.incomplete("Erst alle Schritte einsortieren, dann prüfen.");return;}t.result(liste());};
+  t.show.onclick=function(){pool.innerHTML="";slots.forEach(function(s,i){s.textContent=a.schritte[i];s.dataset.val=i;s.classList.add("filled");});t.solution(liste());};
+  t.reset.onclick=function(){if(!t.canReset())return;t.clearFb();build();};
   build();
 }
 
@@ -262,9 +274,10 @@ function lueckentext(a,t){
     }else if(g.textContent){var back2=el("button","chip",g.textContent);back2.type="button";pool.appendChild(back2);g.textContent="";}
   });
   t.box.appendChild(p);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Erst ein Wort antippen, dann die Lücke. Antippen einer gefüllten Lücke legt das Wort zurück."));
-  t.check.onclick=function(){var ok=0;gaps.forEach(function(g){g.classList.remove("ok","bad");if(!g.textContent){g.classList.add("bad");return;}var r=g.textContent===g.dataset.sol;g.classList.add(r?"ok":"bad");if(r)ok++;});t.result(ok,gaps.length);};
-  t.show.onclick=function(){gaps.forEach(function(g){g.textContent=g.dataset.sol;});pool.innerHTML="";t.check.onclick();};
-  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  function liste(){return gaps.map(function(g){return {el:g,r:g.textContent===g.dataset.sol};});}
+  t.check.onclick=function(){if(gaps.some(function(g){return !g.textContent;})){t.incomplete("Erst alle Lücken füllen, dann prüfen.");return;}t.result(liste());};
+  t.show.onclick=function(){gaps.forEach(function(g){g.textContent=g.dataset.sol;});pool.innerHTML="";t.solution(liste());};
+  t.reset.onclick=function(){if(!t.canReset())return;t.clearFb();build();};
   build();
 }
 
@@ -283,11 +296,13 @@ function zuordnen(a,t){
     if(selected&&b){selected.classList.remove("sel","ok","bad");b.querySelector(".inner").appendChild(selected);selected=null;}
   });
   t.box.appendChild(cats);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Erst eine Karte antippen, dann das passende Feld. Antippen einer einsortierten Karte legt sie zurück."+((a.ablenker&&a.ablenker.length)?" Nicht jede Karte gehört in ein Feld.":"")));
-  t.check.onclick=function(){var ok=0,all=items.filter(function(i){return i.k>=0;}).length,wrong=0;
-    boxes.forEach(function(b,i){b.querySelectorAll(".chip").forEach(function(c){c.classList.remove("ok","bad");var r=Number(c.dataset.k)===i;c.classList.add(r?"ok":"bad");if(r)ok++;else wrong++;});});
-    t.result(wrong?Math.min(ok,all-1):ok,all);};
-  t.show.onclick=function(){pool.innerHTML="";boxes.forEach(function(b){b.querySelector(".inner").innerHTML="";});items.forEach(function(it){var c=chip(it);if(it.k>=0)boxes[it.k].querySelector(".inner").appendChild(c);else pool.appendChild(c);});t.check.onclick();};
-  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  var nReal=items.filter(function(i){return i.k>=0;}).length;
+  function liste(){var l=[];boxes.forEach(function(b,i){b.querySelectorAll(".chip").forEach(function(c){l.push({el:c,r:Number(c.dataset.k)===i});});});
+    pool.querySelectorAll(".chip").forEach(function(c){if(Number(c.dataset.k)>=0)l.push({el:c,r:false});});return l;}
+  function placed(){var n=0;boxes.forEach(function(b){n+=b.querySelectorAll(".chip").length;});return n;}
+  t.check.onclick=function(){if(placed()<nReal){t.incomplete("Erst alle Karten einsortieren, dann prüfen.");return;}t.result(liste(),nReal);};
+  t.show.onclick=function(){pool.innerHTML="";boxes.forEach(function(b){b.querySelector(".inner").innerHTML="";});items.forEach(function(it){var c=chip(it);if(it.k>=0)boxes[it.k].querySelector(".inner").appendChild(c);else pool.appendChild(c);});t.solution(liste());};
+  t.reset.onclick=function(){if(!t.canReset())return;t.clearFb();build();};
   build();
 }
 
@@ -305,30 +320,34 @@ function schaubild(a,t){
     else if(z.textContent){var b2=el("button","chip",z.textContent);b2.type="button";pool.appendChild(b2);z.textContent="";}
   });
   t.box.appendChild(fig);t.box.appendChild(pool);t.box.appendChild(el("p","hint","Erst einen Begriff antippen, dann die passende Nummer im Bild."));
-  t.check.onclick=function(){var ok=0;zones.forEach(function(z){z.classList.remove("ok","bad");var r=z.textContent===z.dataset.sol;z.classList.add(r?"ok":"bad");if(r)ok++;});t.result(ok,zones.length);};
-  t.show.onclick=function(){zones.forEach(function(z){z.textContent=z.dataset.sol;});pool.innerHTML="";t.check.onclick();};
-  t.reset.onclick=function(){t.box.classList.remove("done");t.check.disabled=false;t.clearFb();build();};
+  function liste(){return zones.map(function(z){return {el:z,r:z.textContent===z.dataset.sol};});}
+  t.check.onclick=function(){if(zones.some(function(z){return !z.textContent;})){t.incomplete("Erst alle Nummern beschriften, dann prüfen.");return;}t.result(liste());};
+  t.show.onclick=function(){zones.forEach(function(z){z.textContent=z.dataset.sol;});pool.innerHTML="";t.solution(liste());};
+  t.reset.onclick=function(){if(!t.canReset())return;t.clearFb();build();};
   build();
 }
 
-/* Typ: quiz  (Auswahlfragen mit Erklärung; auch Fehlerdetektiv) */
+/* Typ: quiz  (Auswahlfragen mit Erklärung; auch Fehlerdetektiv). Jede Frage ein Antippen; höchstens zwei Durchgänge. */
 function quiz(a,t){
-  var wrap=el("div");var answered=0,correct=0;var qs=[];
-  function build(){wrap.innerHTML="";answered=0;correct=0;qs=[];
+  var wrap=el("div");var answered=0,correct=0,run=0;
+  function build(){run++;wrap.innerHTML="";answered=0;correct=0;t.reset.hidden=true;
     a.fragen.forEach(function(f){var q=el("div","q");q.appendChild(el("p",null,f.frage));var opts=el("div","opts");var ex=el("p","expl");var done=false;
       shuffle(f.optionen.map(function(o,i){return i;})).forEach(function(i){var b=el("button","opt",f.optionen[i]);b.type="button";
-        b.onclick=function(){if(done)return;done=true;answered++;var r=i===f.richtig;if(r)correct++;b.classList.add(r?"ok":"bad");
+        b.onclick=function(){if(done||t.box.classList.contains("done"))return;done=true;answered++;var r=i===f.richtig;if(r)correct++;b.classList.add(r?"ok":"bad");
           if(!r)opts.querySelectorAll(".opt").forEach(function(o){if(o.textContent===f.optionen[f.richtig])o.classList.add("ok");});
           ex.textContent=(r?"Richtig. ":"Nicht ganz. ")+(f.erklaerung||"");
-          if(answered===a.fragen.length)t.result(correct,a.fragen.length);};
+          if(answered===a.fragen.length)auswerten();};
         opts.appendChild(b);});
-      q.appendChild(opts);q.appendChild(ex);wrap.appendChild(q);qs.push(q);});
+      q.appendChild(opts);q.appendChild(ex);wrap.appendChild(q);});
+  }
+  function auswerten(){var all=a.fragen.length;
+    if(correct===all){t.finish(run===1?"im 1. Versuch richtig":"im 2. Versuch richtig");t.fb.className="fb good";t.fb.textContent="Alles richtig.";}
+    else if(run<MAXV){t.fb.className="fb warn";t.fb.textContent=correct+" von "+all+" richtig. Lest die Erklärungen und startet dann den zweiten Versuch.";t.reset.hidden=false;t.reset.textContent="Zweiter Versuch";}
+    else{t.finish("Erklärungen gelesen");t.fb.className="fb warn";t.fb.textContent=correct+" von "+all+" richtig. Lest die Erklärungen genau.";}
   }
   t.box.appendChild(wrap);
   t.check.hidden=true;t.show.hidden=true;t.show.remove();
-  t.reset.onclick=function(){t.box.classList.remove("done");t.clearFb();build();};
-  var origResult=t.result;
-  t.result=function(ok,all){ if(ok===all){origResult(ok,all);} else {t.fb.className="fb warn";t.fb.textContent=ok+" von "+all+" richtig. Lies die Erklärungen und starte neu.";} };
+  t.reset.onclick=function(){if(t.box.classList.contains("done")||run>=MAXV)return;t.clearFb();build();};
   build();
 }
 
@@ -339,9 +358,11 @@ var lock=el("p","locked","Wenn alle Aufgaben gelöst sind, erscheint hier dein H
 var heft=el("section");heft.id="heft";heft.hidden=true;
 heft.appendChild(el("h2",null,D.heft.titel||"Ins Heft"));
 if(D.heft.auftrag)heft.appendChild(el("p",null,D.heft.auftrag));
+var erg=el("div","ergebnis");heft.appendChild(erg);
 var hi=el("div","heftinhalt");hi.innerHTML=D.heft.inhalt;heft.appendChild(hi);
 app.appendChild(lock);app.appendChild(heft);
-function updateHeft(){var all=solved.every(Boolean);heft.hidden=!all;lock.hidden=all;if(all&&!updateHeft.scrolled){updateHeft.scrolled=true;setTimeout(function(){heft.scrollIntoView({behavior:"smooth",block:"start"});},250);}}
+function updateHeft(){var all=solved.every(Boolean);heft.hidden=!all;lock.hidden=all;
+  if(all){erg.innerHTML="";erg.appendChild(el("p","ergtitel","Euer Ergebnis:"));var ul=el("ul");D.aufgaben.forEach(function(a,i){ul.appendChild(el("li",status[i]==="Lösung angesehen"||status[i]==="Erklärungen gelesen"?"nachher":null,"Aufgabe "+(i+1)+": "+status[i]));});erg.appendChild(ul);}if(all&&!updateHeft.scrolled){updateHeft.scrolled=true;setTimeout(function(){heft.scrollIntoView({behavior:"smooth",block:"start"});},250);}}
 if(D.quelle){app.appendChild(el("p","quelle",D.quelle));}
 document.addEventListener("click",function(e){if(!e.target.closest(".chip,.gap,.zone,.cat,.slot"))clearSel();});
 })();
