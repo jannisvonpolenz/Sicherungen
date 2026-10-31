@@ -7,7 +7,7 @@
 <title>Endosymbiontentheorie: Mitochondrium und Zellkern</title>
 </head>
 <body>
-<!-- Vorlage HTML-Sicherung. Versuchsregel (seit 31.10.2026): Prüfen erst, wenn alles belegt ist; nach Versuch 1 nur Anzahl richtig, keine Markierung; nach Versuch 2 Fehler rot und Lösung zeigen; am Ende Ergebnis je Aufgabe (1. Versuch, 2. Versuch, Lösung angesehen). Aufgabentypen: reihenfolge, lueckentext ([[Wort]] = Lücke), zuordnen, schaubild (bild = <svg> oder data:-Bild; x/y in Prozent), quiz. Mappen-Eintrag erscheint erst, wenn alle Aufgaben gelöst sind. Keine externen Dateien, keine Datenspeicherung. -->
+<!-- Vorlage HTML-Sicherung. Versuchsregel (seit 31.10.2026): Prüfen erst, wenn alles belegt ist; nach Versuch 1 nur Anzahl richtig, keine Markierung; nach Versuch 2 Fehler rot und Lösung zeigen; am Ende Ergebnis je Aufgabe (1. Versuch, 2. Versuch, Lösung angesehen). Aufgabentypen: luegentext (teile: Strings + Fehlerobjekte {falsch, loesung, schluessel: [[[Begriffe einer Gruppe]...] je Alternative], falschwoerter, erklaerung}), reihenfolge, lueckentext ([[Wort]] = Lücke), zuordnen, schaubild (bild = <svg> oder data:-Bild; x/y in Prozent), quiz. Mappen-Eintrag erscheint erst, wenn alle Aufgaben gelöst sind. Keine externen Dateien, keine Datenspeicherung. -->
 <script>
 /* ===== INHALT: nur diesen Block anpassen ===== */
 window.SICHERUNG = {
@@ -15,78 +15,122 @@ window.SICHERUNG = {
  "intro": "Ist auch das Mitochondrium durch Endosymbiose entstanden?",
  "aufgaben": [
   {
-   "typ": "zuordnen",
-   "titel": "Dafür, dagegen oder egal?",
-   "auftrag": "Spricht die Aussage dafür, dass das Organell von Bakterien abstammt, spricht sie dagegen, oder sagt sie nichts über die Herkunft? Sortiere.",
-   "kategorien": [
+   "typ": "luegentext",
+   "titel": "Lügentext: Woher stammt das Mitochondrium?",
+   "auftrag": "In diesem Text stecken fünf Fehler. Tippe die falschen Stellen an und schreibe eine richtige Fassung hinein.",
+   "teile": [
+    "Vor mehr als einer Milliarde Jahren nahm eine große Zelle ein Bakterium durch Endocytose auf. Das Bakterium ",
     {
-     "name": "spricht dafür",
-     "begriffe": [
-      "Mitochondrien haben eine eigene ringförmige DNA.",
-      "Mitochondrien haben eigene kleine Ribosomen, die denen von Bakterien ähneln.",
-      "Mitochondrien entstehen nur durch Teilung aus vorhandenen Mitochondrien.",
-      "Mitochondrien sind von zwei Membranen umgeben."
-     ]
-    },
-    {
-     "name": "spricht dagegen",
-     "begriffe": [
-      "Die DNA im Zellkern ist linear und auf mehrere Chromosomen verteilt.",
-      "Im Zellkern gibt es keine eigenen Ribosomen.",
-      "Bei der Zellteilung löst sich die Kernhülle auf und bildet sich neu."
-     ]
-    },
-    {
-     "name": "sagt nichts über die Herkunft",
-     "begriffe": [
-      "Mitochondrien sind der Ort der Zellatmung.",
-      "Der Zellkern steuert die Zelle.",
-      "Mitochondrien kommen in Tier- und Pflanzenzellen vor."
-     ]
-    }
-   ],
-   "ablenker": []
-  },
-  {
-   "typ": "quiz",
-   "titel": "Fehlerdetektiv",
-   "fragen": [
-    {
-     "frage": "Welche Aussage ist fachlich falsch?",
-     "optionen": [
-      "Das Mitochondrium hat sich aus einem Bakterium in ein Organell verwandelt.",
-      "Mitochondrien stammen von Bakterien ab, die eine Zelle aufgenommen und nicht verdaut hat.",
-      "Mitochondrien haben einige Merkmale ihrer bakteriellen Vorfahren bis heute behalten."
+     "falsch": "wurde im Lysosom verdaut",
+     "loesung": "wurde nicht verdaut",
+     "schluessel": [
+      [
+       [
+        "nicht",
+        "kein"
+       ],
+       [
+        "verdau",
+        "lysosom",
+        "abgebaut"
+       ]
+      ],
+      [
+       [
+        "überleb",
+        "lebte weiter",
+        "am leben"
+       ]
+      ]
      ],
-     "richtig": 0,
-     "erklaerung": "Kein einzelnes Bakterium hat sich verwandelt. Mitochondrien sind Nachkommen aufgenommener Bakterien, die über sehr viele Generationen fest zur Zelle gehören."
+     "falschwoerter": [],
+     "erklaerung": "Endosymbiose heißt: aufgenommen, aber nicht verdaut. Aus einem verdauten Bakterium können keine Nachkommen in der Zelle hervorgehen."
     },
+    " und lebte in der Zelle weiter. Beide Partner hatten einen Vorteil davon. Das Bakterium teilte sich in der Zelle. Bei jeder Zellteilung ",
     {
-     "frage": "Jemand sagt: „Der Zellkern hat zwei Membranen. Also stammt er auch von einem Bakterium ab.“ Was stimmt?",
-     "optionen": [
-      "Ein Merkmal allein reicht nicht. DNA, Ribosomen und Vermehrung passen nicht zu Bakterien.",
-      "Das stimmt, zwei Membranen beweisen die bakterielle Herkunft.",
-      "Das stimmt nicht, denn der Zellkern hat gar keine Membran."
+     "falsch": "bekam nur eine Tochterzelle Bakterien",
+     "loesung": "bekamen beide Tochterzellen Bakterien",
+     "schluessel": [
+      [
+       [
+        "beide",
+        "jede",
+        "alle",
+        "zwei"
+       ]
+      ]
      ],
-     "richtig": 0,
-     "erklaerung": "Die Kernhülle besteht zwar aus zwei Membranen. Aber der Zellkern hat keine ringförmige DNA, keine eigenen Ribosomen und teilt sich nicht selbst. Erst viele übereinstimmende Merkmale zusammen sind Belege."
+     "falschwoerter": [
+      "nur eine",
+      "nur einer"
+     ],
+     "erklaerung": "Nur wenn beide Tochterzellen Bakterien bekommen, werden sie zu einem festen Zellbestandteil. Bei Hatena bekommt dagegen nur eine Tochterzelle die Alge."
     },
+    ". Nach sehr vielen Generationen ",
     {
-     "frage": "Warum spricht man von der Endosymbiontentheorie und nicht nur von einer Vermutung?",
-     "optionen": [
-      "Weil viele Belege bei Chloroplasten und Mitochondrien die Erklärung stützen.",
-      "Weil jemand die Aufnahme des ersten Bakteriums beobachtet hat.",
-      "Weil sie bewiesen ist und nie mehr geändert werden kann."
+     "falsch": "verwandelte sich das Bakterium in ein Mitochondrium",
+     "loesung": "gehörten die Nachkommen des Bakteriums fest zur Zelle. Heute heißen sie Mitochondrien",
+     "schluessel": [
+      [
+       [
+        "nachkomm",
+        "abstamm",
+        "stammt",
+        "stammen",
+        "fest zur zelle",
+        "gehör"
+       ]
+      ]
      ],
-     "richtig": 0,
-     "erklaerung": "Den Vorgang vor über einer Milliarde Jahren hat niemand beobachtet. Eine Theorie ist eine Erklärung, die durch viele Belege gestützt wird. Bewiesen ist sie damit nicht, sie passt aber zu allen bekannten Belegen."
+     "falschwoerter": [
+      "verwandel"
+     ],
+     "erklaerung": "Kein einzelnes Bakterium hat sich verwandelt. Mitochondrien sind Nachkommen der aufgenommenen Bakterien, die über viele Generationen fest zur Zelle gehören."
+    },
+    ". Seine Herkunft sieht man dem Mitochondrium noch heute an: Es hat ",
+    {
+     "falsch": "eine lineare DNA wie der Zellkern",
+     "loesung": "eine ringförmige DNA wie Bakterien",
+     "schluessel": [
+      [
+       [
+        "ringf",
+        "kreisf",
+        "zirkul",
+        "ring-dna",
+        "ringdna",
+        "als ring"
+       ]
+      ]
+     ],
+     "falschwoerter": [
+      "linear"
+     ],
+     "erklaerung": "Mitochondrien haben wie Bakterien eine ringförmige DNA. Linear und auf mehrere Chromosomen verteilt ist die DNA im Zellkern."
+    },
+    ", eigene kleine Ribosomen und zwei Membranen. Auch der Zellkern hat zwei Membranen. ",
+    {
+     "falsch": "Deshalb stammt auch der Zellkern von einem Bakterium ab.",
+     "loesung": "Ein Merkmal allein reicht aber nicht als Beleg: Der Zellkern hat keine ringförmige DNA, keine eigenen Ribosomen und teilt sich nicht selbst.",
+     "schluessel": [
+      [
+       [
+        "nicht",
+        "kein",
+        "reicht",
+        "allein"
+       ]
+      ]
+     ],
+     "falschwoerter": [],
+     "erklaerung": "Ein Merkmal allein ist kein Beleg. Erst viele übereinstimmende Merkmale zusammen stützen die bakterielle Herkunft, und die fehlen beim Zellkern."
     }
    ]
   }
  ],
  "heft": {
   "titel": "In OneNote",
-  "auftrag": "Übertrage die Tabelle und den Satz in OneNote unter unsere Leitfrage.",
+  "auftrag": "Füge deinen berichtigten Text in OneNote ein (Knopf „Text kopieren“) und übertrage die Tabelle darunter.",
   "inhalt": "<p><strong>Belege prüfen: Mitochondrium und Zellkern</strong></p><table style=\"border-collapse:collapse;width:100%\"><tr><th style=\"text-align:left;border-bottom:1px solid #999;padding:4px\">Merkmal</th><th style=\"border-bottom:1px solid #999;padding:4px\">Mitochondrium</th><th style=\"border-bottom:1px solid #999;padding:4px\">Zellkern</th></tr><tr><td style=\"padding:4px\">eigene ringförmige DNA</td><td style=\"text-align:center\">✓</td><td style=\"text-align:center\">✗</td></tr><tr><td style=\"padding:4px\">eigene kleine Ribosomen wie bei Bakterien</td><td style=\"text-align:center\">✓</td><td style=\"text-align:center\">✗</td></tr><tr><td style=\"padding:4px\">zwei Membranen</td><td style=\"text-align:center\">✓</td><td style=\"text-align:center\">✓</td></tr><tr><td style=\"padding:4px\">vermehrt sich durch eigene Teilung</td><td style=\"text-align:center\">✓</td><td style=\"text-align:center\">✗</td></tr></table><p>Erst viele übereinstimmende Merkmale zusammen sind Belege für die Endosymbiontentheorie. Ein Merkmal allein reicht nicht.</p>"
  },
  "quelle": "Eigene Darstellung nach dem Arbeitsblatt „Endosymbiontentheorie: Mitochondrium und Zellkern“ (Std. 18) und DocCheck Flexikon: Endosymbiontentheorie."
@@ -148,6 +192,23 @@ button{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;touch-
 .ergebnis{border:1px solid var(--line);border-radius:6px;padding:8px 12px;margin:0 0 12px}.ergebnis ul{margin:4px 0 0;padding-left:1.2em}.ergtitel{margin:0;font-weight:600}.ergebnis li.nachher{color:var(--bad)}
 .locked{color:var(--muted);font-size:.95rem;margin:24px 0 0}
 .quelle{color:var(--muted);font-size:.8rem;margin-top:28px}
+
+.lt{line-height:2;margin:0 0 10px}
+.lt .seg{cursor:pointer;border-radius:3px;padding:1px 0;-webkit-tap-highlight-color:transparent}
+.lt .seg.flash{background:var(--soft);outline:1px dashed var(--line)}
+.lt .err.open{background:var(--sel);box-shadow:0 0 0 2px var(--selline) inset}
+.lt .err.markiert{text-decoration:underline wavy var(--bad)}
+.lt .err.done{cursor:default}
+.lt del{color:var(--bad)}
+.lt ins{text-decoration:none;background:var(--okbg);border-bottom:2px solid var(--ok);padding:0 .2em}
+.ltform{border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin:8px 0 12px;background:#fff}
+.ltform p{margin:0 0 6px}
+.ltform textarea{width:100%;min-height:64px;font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;resize:vertical}
+.ltform .row{margin-top:8px}
+.ltform .vorschlag{background:var(--soft);border-radius:6px;padding:8px 10px;margin:6px 0}
+.ltcount{font-weight:600;margin:0 0 8px}
+.ltout{border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin:12px 0 0;background:var(--soft)}
+.ltout p{margin:0 0 8px}
 </style>
 <main id="app"></main>
 <script>
@@ -320,7 +381,46 @@ function quiz(a,t){
   build();
 }
 
-var TYPES={reihenfolge:reihenfolge,lueckentext:lueckentext,zuordnen:zuordnen,schaubild:schaubild,quiz:quiz};
+/* Typ: luegentext  (Fehler im Text finden und selbst korrigieren; Prüfung über Schlüsselbegriffe, sonst Selbstvergleich mit Lösungsvorschlag) */
+function luegentext(a,t){
+  var errs=a.teile.filter(function(p){return typeof p!=="string";});var nErr=errs.length;var fixed=0,own=0,wrongTaps=0,hinted=false;
+  function norm(s){return s.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/\s+/g," ");}
+  function passt(txt,e){var n=norm(txt);return (e.schluessel||[]).some(function(alt){return alt.every(function(grp){return grp.some(function(w){return n.indexOf(norm(w))>=0;});});});}
+  var count=el("p","ltcount");var lt=el("p","lt");var form=el("div","ltform");form.hidden=true;var open=null;
+  function upd(){count.textContent="Korrigiert: "+fixed+" von "+nErr;}
+  a.teile.forEach(function(p){
+    if(typeof p==="string"){(p.match(/[^.,;:!?]*[.,;:!?]+\s*|[^.,;:!?]+$/g)||[p]).forEach(function(s0){var s=s0.trim();if(!s)return;if(/^\s/.test(s0))lt.appendChild(document.createTextNode(" "));if(/^[.,;:!?]+$/.test(s)){lt.appendChild(document.createTextNode(s));}else{var sp=el("span","seg",s);sp.onclick=function(){if(t.box.classList.contains("done"))return;wrongTaps++;sp.classList.add("flash");t.fb.className="fb";t.fb.textContent="Diese Stelle stimmt so.";setTimeout(function(){sp.classList.remove("flash");},900);};lt.appendChild(sp);}if(/\s$/.test(s0))lt.appendChild(document.createTextNode(" "));});}
+    else{var sp=el("span","seg err",p.falsch);p.el=sp;sp.onclick=function(){if(p.erledigt||t.box.classList.contains("done"))return;t.clearFb();oeffne(p);};lt.appendChild(sp);}
+  });
+  function oeffne(p){if(open&&open.el)open.el.classList.remove("open");open=p;p.el.classList.add("open");form.innerHTML="";form.hidden=false;
+    form.appendChild(el("p",null,"Hier stimmt etwas nicht: „"+p.falsch+"“. Schreibe eine richtige Fassung."));
+    var ta=el("textarea");ta.setAttribute("aria-label","Deine Korrektur");form.appendChild(ta);var info=el("div");form.appendChild(info);
+    var r=el("div","row");var ok=el("button","btn","Korrektur prüfen");ok.type="button";r.appendChild(ok);form.appendChild(r);
+    ok.onclick=function(){var v=ta.value.trim();if(v.length<3){info.innerHTML="";info.appendChild(el("p","fb warn","Schreibe erst deine Korrektur hinein."));return;}
+      if(passt(v,p)){fertig(p,v,true);return;}var nv=norm(v);if(norm(p.falsch).indexOf(nv)>=0){info.innerHTML="";info.appendChild(el("p","fb warn","Das steht so schon im Text. Was muss anders sein?"));return;}var fw=(p.falschwoerter||[]).filter(function(w){return nv.indexOf(norm(w))>=0;});if(fw.length){info.innerHTML="";info.appendChild(el("p","fb warn","In deiner Fassung steckt noch „"+fw[0]+"“. Was muss anders sein?"));return;}
+      info.innerHTML="";info.appendChild(el("p",null,"Das erkenne ich nicht sicher. Vergleiche deine Fassung mit diesem Vorschlag:"));info.appendChild(el("p","vorschlag",p.loesung));
+      var r2=el("div","row");var b1=el("button","btn","Meine Fassung meint dasselbe");b1.type="button";var b2=el("button","btn sec","Vorschlag übernehmen");b2.type="button";var b3=el("button","btn sec","Nochmal schreiben");b3.type="button";
+      b1.onclick=function(){fertig(p,v,true);};b2.onclick=function(){fertig(p,p.loesung,false);};b3.onclick=function(){info.innerHTML="";ta.focus();};
+      r2.appendChild(b1);r2.appendChild(b2);r2.appendChild(b3);info.appendChild(r2);};
+    form.scrollIntoView({behavior:"smooth",block:"nearest"});ta.focus();}
+  function fertig(p,text,eigen){p.erledigt=true;p.text=text;fixed++;if(eigen)own++;p.el.classList.remove("open","markiert");p.el.classList.add("done");p.el.innerHTML="";
+    var d=el("del",null,p.falsch);var i=el("ins",null,text);p.el.appendChild(d);p.el.appendChild(document.createTextNode(" "));p.el.appendChild(i);
+    form.hidden=true;open=null;t.fb.className="fb good";t.fb.textContent=p.erklaerung||"Korrigiert.";upd();
+    if(fixed===nErr){abschluss();}}
+  function abschluss(){var st=own===nErr?(hinted?"alle Fehler selbst korrigiert (mit Tipp)":"alle Fehler selbst gefunden und korrigiert"):(own+" von "+nErr+" selbst korrigiert, Rest mit Vorschlag");
+    t.finish(st);t.fb.className="fb good";t.fb.textContent="Alle Fehler korrigiert.";hintB.hidden=true;
+    var txt=a.teile.map(function(p){return typeof p==="string"?p:p.text;}).join("").replace(/\s+/g," ").trim();
+    var out=el("div","ltout");out.appendChild(el("p",null,"Dein berichtigter Text:"));out.appendChild(el("p",null,txt));var cp=el("button","btn","Text kopieren");cp.type="button";
+    var msg=el("p","hint");cp.onclick=function(){function done(){msg.textContent="Kopiert. Füge den Text in OneNote ein.";}
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(done,fallback);}else{fallback();}
+      function fallback(){var ta=el("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done();}catch(e){msg.textContent="Markiere den Text und kopiere ihn von Hand.";}ta.remove();}};
+    out.appendChild(cp);out.appendChild(msg);t.box.insertBefore(out,t.row);}
+  var hintB=el("button","btn sec","Tipp: Fehlerstellen markieren");hintB.type="button";hintB.onclick=function(){hinted=true;errs.forEach(function(p){if(!p.erledigt)p.el.classList.add("markiert");});hintB.hidden=true;};
+  t.box.appendChild(count);t.box.appendChild(lt);t.box.appendChild(form);t.box.appendChild(el("p","hint","Tippe eine Stelle an, die du für falsch hältst. Schreibe dann eine richtige Fassung hinein."));
+  t.check.hidden=true;t.reset.hidden=true;t.show.hidden=true;t.row.appendChild(hintB);upd();
+}
+
+var TYPES={luegentext:luegentext,reihenfolge:reihenfolge,lueckentext:lueckentext,zuordnen:zuordnen,schaubild:schaubild,quiz:quiz};
 D.aufgaben.forEach(function(a,i){solved[i]=false;var t=makeTask(a,i);TYPES[a.typ](a,t);t.box.appendChild(t.row);t.box.appendChild(t.fb);app.appendChild(t.box);});
 
 var lock=el("p","locked","Wenn alle Aufgaben gelöst sind, erscheint hier dein Eintrag für OneNote.");
